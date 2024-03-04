@@ -56,11 +56,12 @@ stages:
         python ./CS-ArtifactScanner-Report/export_report_tmas.py $(imageName) --resultFile ./result.json
         ls -la
       displayName: Create Excel Report with Vulnerabilities
-    - publish: $(System.DefaultWorkingDirectory)/result.json
-      displayName: 'Publish json'
-      artifact: 'result.json'
     - task: PublishPipelineArtifact@1
       inputs:
         targetPath: '$(System.DefaultWorkingDirectory)/result.json'
+        publishLocation: 'pipeline'
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(System.DefaultWorkingDirectory)/*.xlsx'
         publishLocation: 'pipeline'
     

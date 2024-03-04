@@ -50,7 +50,10 @@ stages:
         git clone https://github.com/XeniaP/CS-ArtifactScanner-Report.git
         pip install -r ./CS-ArtifactScanner-Report/requirements.txt
         python ./CS-ArtifactScanner-Report/export_report_tmas.py $(imageName) --resultFile ./result.json
+        echo $(System.DefaultWorkingDirectory)
+        ls -la $(System.DefaultWorkingDirectory)
       displayName: Create Excel Report with Vulnerabilities
     - publish: 'result.json'
       displayName: 'Publish json'
-      artifact: drop
+      artifact: $(System.DefaultWorkingDirectory)/result.json
+    

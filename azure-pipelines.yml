@@ -62,6 +62,6 @@ stages:
         publishLocation: 'pipeline'
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(System.DefaultWorkingDirectory)/*.xlsx'
+        targetPath: '$(System.DefaultWorkingDirectory)/**/*.xlsx'
         publishLocation: 'pipeline'
     

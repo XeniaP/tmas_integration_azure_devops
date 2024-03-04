@@ -51,7 +51,7 @@ stages:
         pip install -r ./CS-ArtifactScanner-Report/requirements.txt
         python ./CS-ArtifactScanner-Report/export_report_tmas.py $(imageName) --resultFile ./result.json
         echo $(System.DefaultWorkingDirectory)
-        ls -la
+        ls -la $(System.DefaultWorkingDirectory)
       displayName: Create Excel Report with Vulnerabilities
     - publish: 'result.json'
       displayName: 'Publish json'

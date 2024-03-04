@@ -60,10 +60,6 @@ stages:
       displayName: Create Excel Report with Vulnerabilities
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(System.DefaultWorkingDirectory)/result.json'
-        publishLocation: 'pipeline'
-    - task: PublishPipelineArtifact@1
-      inputs:
         targetPath: '$(System.DefaultWorkingDirectory)/$(excelFileName)'
         publishLocation: 'pipeline'
     

@@ -11,7 +11,6 @@ resources:
 variables:
   imageName: 'xniapdev/django-app'
   tag: '$(Build.BuildId)'
-  apikey: '$(v1apikey)'
 
 stages:
 - stage: Build
@@ -50,11 +49,10 @@ stages:
         targetType: 'inline'
         script: ./tmas-cli/tmas scan docker-archive:image.tar --malwareScan --saveSBOM > result.json
       env:
-        TMAS_API_KEY: $(apikey)
+        TMAS_API_KEY: $(TMAS_API_KEY)
     - script: |
         git clone https://github.com/XeniaP/CS-ArtifactScanner-Report.git
-        cd CS-ArtifactScanner-Report
-        pip install -r requirements.txt
+        pip install -r ./CS-ArtifactScanner-Report/requirements.txt
         python ./CS-ArtifactScanner-Report/export_report_tmas.py $(imageName) --resultFile ./result.json
       displayName: Create Excel Report with Vulnerabilities
     - publish: 'result.json'

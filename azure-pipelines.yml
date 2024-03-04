@@ -54,3 +54,10 @@ stages:
     - publish: 'result.json'
       displayName: 'Publish json'
       artifact: drop
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'result.json'
+        publishLocation: 'Container'
+        MaxArtifactSize: 10000
+    

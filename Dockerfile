@@ -4,8 +4,6 @@ FROM tomcat:7
 RUN set -ex \
 	&& rm -rf /usr/local/tomcat/webapps/* \
 	&& chmod a+x /usr/local/tomcat/bin/*.sh 
-
-RUN apk --no-cache add curl
 # Copy files in Application Environment - For Demo We add Eicar Test File
 ADD https://secure.eicar.org/eicar.com.txt /root/
 # Create Malware in Build
